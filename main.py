@@ -6,6 +6,7 @@ import lang
 import os
 import os.path
 
+FILENAMES = {}
 
 # Functions #
 
@@ -72,17 +73,17 @@ def check_mods(mpath):
 
 lang.p('greeting', v="1.0")
 
-print("\nScanning mods on client...", end=' ')
+lang.p('step.scan')
 path = check_path()
 versions = check_mods(path)
-print("Ok")
+lang.p('ok')
 
-print("\nChecking for updates...", end=' ')
+lang.p('step.upd.check')
 # TODO: send mod versions to server
-print("Ok")
+lang.p('ok')
 
-print("\nDownloading updates...", end=' ')
+lang.p('step.upd.download')
 # TODO: download mods
-print("Ok")
+lang.p('ok')
 
-print("\nDone!")
+lang.p('done')
