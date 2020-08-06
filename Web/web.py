@@ -10,11 +10,13 @@ app = Flask(__name__)
 
 @app.route('/mods/upd/get', methods=['GET', 'POST'])
 def upd_get():
-    client_mods = json.loads(request.get_json())
-    server_mods = utils.check_mods('mods')
-
-    if not client_mods:
+    json_request = request.get_json()
+    if json_request:
+        client_mods = json.loads(json_request)
+    else:
         client_mods = {}
+
+    server_mods = utils.check_mods('mods')
 
     data = utils.get_updates(client_mods, server_mods)
 
