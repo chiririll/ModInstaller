@@ -1,16 +1,26 @@
 import json
 import ntpath
+import sys
+
+import requests
 from zipfile import ZipFile
+
+import wget as wget
 
 import lang
 import os
 import os.path
 
+
 FILENAMES = {}
+URL = "http://127.0.0.1:5000/"
+PATH = os.path.join(os.getenv('APPDATA'), '.minecraft')
 
 # Functions #
 
-def check_path(mpath=os.path.join(os.getenv('APPDATA'), '.minecraft')):
+
+def check_path():
+    mpath = PATH
     if os.path.isdir(mpath):
         return mpath
     else:
@@ -28,9 +38,9 @@ def get_mods_files(mpath):
 
 
 # Getting client mods
-def check_mods(mpath):
+def check_mods():
     # Mods path
-    mpath = os.path.join(mpath, 'mods')
+    mpath = os.path.join(PATH, 'mods')
 
     # Files in mods folder
     mods = get_mods_files(mpath)
@@ -44,18 +54,24 @@ def check_mods(mpath):
     for modFile in mods:
         # Opening mod
         file = ZipFile(modFile, 'r')
+        filename = ntpath.basename(modFile).replace(' ', '_')
+
+        # Default values
+        FILENAMES[filename] = modFile
+        versions[filename] = '?'
+
         if 'mcmod.info' not in file.namelist():
-            filename = ntpath.basename(modFile).replace(' ', '_')
-            versions[filename] = '?'
             continue
 
         # Reading mod info
         try:
             mod_data = json.loads(file.read('mcmod.info'))
         except Exception as e:
-            filename = ntpath.basename(modFile).replace(' ', '_')
-            versions[filename] = '?'
             continue
+
+        # Delete default values
+        del versions[filename]
+        del FILENAMES[filename]
 
         # Getting mod info in different mods
         if type(mod_data) is dict:
@@ -66,24 +82,52 @@ def check_mods(mpath):
         # Adding mod id with version to dict
         for mod in mod_data:
             versions[mod['modid']] = mod['version']
+            FILENAMES[mod['modid']] = modFile
     return versions
 
+
+def check_updates(versions):
+    try:
+        req = requests.post(URL + 'upd/check', json=json.dumps(versions))
+    except Exception:
+        sys.exit(lang.get('error.server'))
+
+    return req.json()
+
+
+def delete_mods(mods):
+    for mod in mods:
+        if mod in FILENAMES.keys() and os.path.isfile(FILENAMES[mod]):
+            os.remove(FILENAMES[mod])
+
+def download_mods(mods):
+    for mod in mods:
+        wget.download(URL + 'upd/get/' + mod, os.path.join(PATH, 'mods', '1.12.2', mod))
 # ---------- #
 
 
+# Starting
 lang.p('greeting', v="1.0")
+PATH = check_path()
 
+# Scanning mods
 lang.p('step.scan')
-path = check_path()
-versions = check_mods(path)
+now_versions = check_mods()
 lang.p('ok')
 
+# Checking for updates
 lang.p('step.upd.check')
-# TODO: send mod versions to server
+TASKS = check_updates(now_versions)
 lang.p('ok')
 
+# Deleting old mods
+lang.p('step.upd.delete')
+delete_mods(TASKS['delete'])
+lang.p('ok')
+
+# Downloading mods
 lang.p('step.upd.download')
-# TODO: download mods
+download_mods(TASKS['download'])
 lang.p('ok')
 
 lang.p('done')

@@ -7,7 +7,7 @@ app = Flask(__name__)
 def upd_check():
     data = request.get_json()
     # TODO: handle data
-    return jsonify(data)
+    return jsonify({"delete": ["file1", "file2"], "download": ["file1", "file2"]})
 
 
 @app.route('/upd/get/<mod>')
