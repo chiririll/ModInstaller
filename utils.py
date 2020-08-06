@@ -81,7 +81,7 @@ def check_mods(mod_path):
 
 
 def update(data, mod_path):
-    URL = "http://127.0.0.1:5000/mods/upd/get"
+    URL = "http://autochess.pythonanywhere.com/mods/upd/get"
     chunk_size = 128
 
     # Cleaning last update
