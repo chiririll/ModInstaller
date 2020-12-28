@@ -7,6 +7,21 @@ import sys
 from zipfile import ZipFile
 
 
+def get_mc_path():
+    PATH = ''
+    if sys.platform in ['win32']:
+        PATH = os.path.join(os.getenv('APPDATA'), '.minecraft')
+    elif sys.platform in ['linux', 'linux2']:
+        PATH = os.path.expanduser('~/.minecraft')
+    elif sys.platform in ['darwin']:
+        PATH = os.path.expanduser('~/Library/Application Support/minecraft')
+
+    if os.path.isdir(PATH):
+        return PATH
+    else:
+        return ''
+
+
 def check_path(mc_path):
     # Is minecraft in this folder
     if os.path.isdir(mc_path) and 'assets' in os.listdir(mc_path):

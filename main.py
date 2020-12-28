@@ -1,50 +1,43 @@
+import os
 import sys
-import os.path
-
-import lang
 import utils
+from PyQt5 import QtWidgets
 
-FILENAMES = {}
-URL = "http://autochess.pythonanywhere.com"
-
-if sys.platform in ['win32']:
-    PATH = os.path.join(os.getenv('APPDATA'), '.minecraft')
-elif sys.platform in ['linux', 'linux2']:
-    PATH = os.path.expanduser('~/.minecraft')
-elif sys.platform in ['darwin']:
-    PATH = os.path.expanduser('~/Library/Application Support/minecraft')
-else:
-    sys.exit(lang.get('os.unsupported'))
+from Widgets import main
 
 
-# Starting #
-lang.p('greeting', v="1.0")
-PATH = utils.check_path(PATH)
-# -------- #
+class ModUpdater(QtWidgets.QMainWindow, main.Ui_MainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
 
-# Scanning mods #
-lang.p('step.scan')
+        self.link_events()
+        self.set_default_values()
+        # TODO: get mods list and update field
 
-# mods path
-mod_path = os.path.join(PATH, 'mods')
+    def link_events(self):
+        self.MCPathSelect.clicked.connect(self.select_mc_folder)
 
-# Getting info about client mods
-data = utils.check_mods(mod_path)
+    def set_default_values(self):
+        self.MCPathText.setText(utils.get_mc_path())
+        # self.update_mods_list()
 
-lang.p('ok')
-# ------------- #
+    def select_mc_folder(self):
+        path = QtWidgets.QFileDialog.getExistingDirectory(self, "Choose folder", self.MCPathText.text())
+        if path:
+            self.MCPathText.setText(str(path))
 
-# Getting updates #
-lang.p('step.upd.get')
-mod_path = os.path.join(mod_path, '1.12.2')
-utils.update(data, mod_path)
-lang.p('ok')
-# -------------------- #
+    def update_mods_list(self):
+        mc_path = self.MCPathText.text()
+        if mc_path == '':
+            return
+
+        mod_path = os.path.join(mc_path, 'mods')
+        print(utils.check_mods(mod_path))
 
 
-# Deleting old mods
-lang.p('step.upd.delete')
-utils.delete_mods(mod_path)
-lang.p('ok')
-
-lang.p('done')
+if __name__ == '__main__':
+    app = QtWidgets.QApplication(sys.argv)
+    window = ModUpdater()
+    window.show()
+    app.exec_()
