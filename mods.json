@@ -1,0 +1,87 @@
+{
+    "?": [
+        "MathParser.org-mXparser-4.0.0.jar",
+        "minecolonies_1.12.2_0.10.772_RELEASE_universal.jar",
+        "WarpDrive_1.12.2_1.5.19.jar"
+    ],
+    "ambientsounds": [
+        "?",
+        "AmbientSounds_v3.0.18_mc1.12.2.jar"
+    ],
+    "baikalmc": [
+        "1.1.0",
+        "Baikal4MC-1.1.jar"
+    ],
+    "baubles": [
+        "1.12-1.5.2",
+        "Baubles_1.12_1.5.2.jar"
+    ],
+    "classicbar": [
+        "0.5.3",
+        "classicbar_1.12.2_0.5.3.jar"
+    ],
+    "creativecore": [
+        "1.10",
+        "CreativeCore_v1.10.34_mc1.12.2.jar"
+    ],
+    "divinerpg": [
+        "1.7.1",
+        "DivineRPG_1.12.2_1.7.1.jar"
+    ],
+    "ForgeEssentials": [
+        "12.3.82",
+        "forgeessentials-1.12.2-12.3.82-server.jar"
+    ],
+    "cfm": [
+        "6.3.0",
+        "furniture_6.3.0_1.12.2.jar"
+    ],
+    "inventorytweaks": [
+        "1.64+dev.151.822d839",
+        "InventoryTweaks_1.12.2_1.64dev.151.jar"
+    ],
+    "jei": [
+        "4.16.1.301",
+        "jei_1.12.2_4.16.1.301.jar"
+    ],
+    "mobends": [
+        "0.24",
+        "mobends_0.24_for_MC_1.12_fixed.jar"
+    ],
+    "mutantbeasts": [
+        "1.12.2-1.0.1",
+        "MutantBeasts_1.12.2_1.0.1.jar"
+    ],
+    "reap": [
+        "1.5.3",
+        "reap_1.12.2_1.5.3.jar"
+    ],
+    "ropebridge": [
+        "1.12-2.0.7",
+        "ropebridge_1.12.2_2.0.7.jar"
+    ],
+    "thaumcraft": [
+        "1.12.2-6.1.BETA26",
+        "Thaumcraft_1.12.2_6.1.BETA26.jar"
+    ],
+    "veinminer": [
+        "0.38.1",
+        "VeinMiner_1.12_0.38.1.639.jar"
+    ],
+    "veinminermodsupport": [
+        "0.38.1",
+        "VeinMiner_1.12_0.38.1.639.jar"
+    ],
+    "wildnature": [
+        "1.2",
+        "wildnature-1.2.jar"
+    ],
+    "worldedit": [
+        "6.1.10-SNAPSHOT;3978-1e3af45",
+        "worldedit_mc1.12.2_6.1.10.jar"
+    ],
+    "xaerominimap": [
+        "20.30.0",
+        "Xaeros_Minimap_20.30.0_Forge_1.12.jar"
+    ]
+}

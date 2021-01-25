@@ -103,7 +103,7 @@
      <string>Start updating</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="DeleteMod">
+   <widget class="QPushButton" name="DeleteBtn">
     <property name="geometry">
      <rect>
       <x>330</x>
@@ -127,16 +127,6 @@
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Update:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
-   <widget class="QListView" name="InstalledModsList">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>180</y>
-      <width>421</width>
-      <height>251</height>
-     </rect>
     </property>
    </widget>
    <widget class="QProgressBar" name="UpdateProgress">
@@ -165,7 +155,7 @@
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Installed mods:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="DeleteCheck">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -176,6 +166,16 @@
     </property>
     <property name="text">
      <string>Delete unused mods</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="InstalledModsList">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>421</width>
+      <height>241</height>
+     </rect>
     </property>
    </widget>
   </widget>

@@ -1,0 +1,1 @@
+pyuic5 Qt-GUI/main.ui -o Widgets/main.py

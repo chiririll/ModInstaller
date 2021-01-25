@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'main.ui'
+# Form implementation generated from reading ui file 'Qt-GUI/main.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.2
 #
@@ -45,15 +45,12 @@ class Ui_MainWindow(object):
         self.UpdateStart = QtWidgets.QPushButton(self.centralwidget)
         self.UpdateStart.setGeometry(QtCore.QRect(10, 550, 439, 51))
         self.UpdateStart.setObjectName("UpdateStart")
-        self.DeleteMod = QtWidgets.QPushButton(self.centralwidget)
-        self.DeleteMod.setGeometry(QtCore.QRect(330, 440, 111, 23))
-        self.DeleteMod.setObjectName("DeleteMod")
+        self.DeleteBtn = QtWidgets.QPushButton(self.centralwidget)
+        self.DeleteBtn.setGeometry(QtCore.QRect(330, 440, 111, 23))
+        self.DeleteBtn.setObjectName("DeleteBtn")
         self.UpdateMods = QtWidgets.QLabel(self.centralwidget)
         self.UpdateMods.setGeometry(QtCore.QRect(10, 480, 441, 31))
         self.UpdateMods.setObjectName("UpdateMods")
-        self.InstalledModsList = QtWidgets.QListView(self.centralwidget)
-        self.InstalledModsList.setGeometry(QtCore.QRect(20, 180, 421, 251))
-        self.InstalledModsList.setObjectName("InstalledModsList")
         self.UpdateProgress = QtWidgets.QProgressBar(self.centralwidget)
         self.UpdateProgress.setGeometry(QtCore.QRect(18, 520, 421, 21))
         self.UpdateProgress.setProperty("value", 0)
@@ -61,9 +58,12 @@ class Ui_MainWindow(object):
         self.InstalleModsTitle = QtWidgets.QLabel(self.centralwidget)
         self.InstalleModsTitle.setGeometry(QtCore.QRect(20, 140, 421, 31))
         self.InstalleModsTitle.setObjectName("InstalleModsTitle")
-        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox.setGeometry(QtCore.QRect(20, 440, 161, 21))
-        self.checkBox.setObjectName("checkBox")
+        self.DeleteCheck = QtWidgets.QCheckBox(self.centralwidget)
+        self.DeleteCheck.setGeometry(QtCore.QRect(20, 440, 161, 21))
+        self.DeleteCheck.setObjectName("DeleteCheck")
+        self.InstalledModsList = QtWidgets.QListWidget(self.centralwidget)
+        self.InstalledModsList.setGeometry(QtCore.QRect(20, 180, 421, 241))
+        self.InstalledModsList.setObjectName("InstalledModsList")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -76,7 +76,7 @@ class Ui_MainWindow(object):
         self.MCPathSelect.setText(_translate("MainWindow", "Select"))
         self.Title.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:24pt;\">Mods updater v2</span></p></body></html>"))
         self.UpdateStart.setText(_translate("MainWindow", "Start updating"))
-        self.DeleteMod.setText(_translate("MainWindow", "Delete"))
+        self.DeleteBtn.setText(_translate("MainWindow", "Delete"))
         self.UpdateMods.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">Update:</span></p></body></html>"))
         self.InstalleModsTitle.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt;\">Installed mods:</span></p></body></html>"))
-        self.checkBox.setText(_translate("MainWindow", "Delete unused mods"))
+        self.DeleteCheck.setText(_translate("MainWindow", "Delete unused mods"))

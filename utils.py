@@ -22,16 +22,6 @@ def get_mc_path():
         return ''
 
 
-def check_path(mc_path):
-    # Is minecraft in this folder
-    if os.path.isdir(mc_path) and 'assets' in os.listdir(mc_path):
-        return mc_path
-    else:
-        lang.p('path.wrong', path=mc_path)
-        lang.p('path.enter')
-        return check_path(input())
-
-
 def get_mods_files(mpath):
     mods = []
     for mod in os.listdir(mpath):
@@ -91,6 +81,11 @@ def check_mods(mod_path):
 
         # Adding mod id with version to dict
         for mod in mod_data:
+            if 'modid' not in mod.keys():
+                data['?'].append(filename)
+                break
+            if 'version' not in mod.keys():
+                mod['version'] = '?'
             data[mod['modid']] = [mod['version'], filename]
     return data
 

@@ -39,5 +39,13 @@ def upd_get():
     return send_file('tmp/mods.zip', attachment_filename='mods_temp.zip')
 
 
+@app.route('/mods/getlist')
+def get_mods_list():
+    mods = []
+    for modId, params in utils.check_mods('mods').items():
+        if modId != '?':
+            mods.append(modid)
+
+
 if __name__ == '__main__':
     app.run()

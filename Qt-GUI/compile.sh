@@ -1,1 +1,0 @@
-pyuic5 main.ui -o ../Widgets/main.py
